@@ -1,0 +1,51 @@
+.search-phim{
+    @include max(1112px){
+        display: none;
+    }
+    border-radius: 15px;
+    bottom: 40px;
+    box-shadow: 1.95px 1.95px 2.6px rgb(0 0 0 / 15%);
+    height: 80px;
+    left: 0;
+    margin: auto;
+    position: relative;
+    right: 0;
+    width: 80%;
+    z-index: 999;
+    &-container{
+        align-items: center;
+    background-color: #fff;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 5px 5px;
+    width: 100%;
+    &-item{
+        align-items: center;
+    border-right: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    }
+    .ant-select{
+        width: 90% !important;
+    }
+    .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+        border-radius:20px;
+    }
+    button{
+        color: #fff;
+        background-color: $primary-color;
+        width: 80%;
+        border-radius:10px;
+        height: 34px;
+        transition: all  0.5s;
+        &:hover{
+            background-color: #fff;
+        color: $primary-color;
+
+        }
+    }
+    }
+}
