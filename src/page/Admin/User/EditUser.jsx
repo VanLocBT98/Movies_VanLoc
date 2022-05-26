@@ -5,9 +5,7 @@ import {
     Input,
     Button,
 } from 'antd';
-import { history } from '../../../App'
 import { useFormik } from 'formik';
-import moment from 'moment';
 import { useDispatch, useSelector } from 'react-redux';
 import { layThongTinNguoiDungDanngNhapAction, capNhatThongTinNguoiDungAction } from '../../../redux/actions/QuanLyNguoiDungAction'
 import Swal from "sweetalert2";
@@ -16,8 +14,8 @@ import { GROUPID } from '../../../util/settings/Config'
 const EditUser = (props) => {
     const { TextArea } = Input;
     const [componentSize, setComponentSize] = useState('default');
-    const { userLogin } = useSelector(state => state.QuanLyNguoiDungReducer)
-    console.log(userLogin.taiKhoan)
+    const { thongTinNguoiDungCapNhat } = useSelector(state => state.QuanLyNguoiDungReducer)
+    console.log(thongTinNguoiDungCapNhat.taiKhoan)
     const dispatch = useDispatch();
 
     const onFormLayoutChange = ({ size }) => {
@@ -25,18 +23,18 @@ const EditUser = (props) => {
     };
 
     useEffect(() => {
-        dispatch(layThongTinNguoiDungDanngNhapAction(userLogin.taiKhoan))
+        dispatch(layThongTinNguoiDungDanngNhapAction(thongTinNguoiDungCapNhat.taiKhoan))
     }, [])
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
-            taiKhoan: userLogin.taiKhoan,
-            matKhau: userLogin.matKhau,
-            hoTen: userLogin.hoTen,
-            email: userLogin.email,
-            soDt: userLogin.soDT,
+            taiKhoan: thongTinNguoiDungCapNhat.taiKhoan,
+            matKhau: thongTinNguoiDungCapNhat.matKhau,
+            hoTen: thongTinNguoiDungCapNhat.hoTen,
+            email: thongTinNguoiDungCapNhat.email,
+            soDt: thongTinNguoiDungCapNhat.soDT,
             maNhom: '',
-            maLoaiNguoiDung: userLogin.maLoaiNguoiDung
+            maLoaiNguoiDung: thongTinNguoiDungCapNhat.maLoaiNguoiDung
         },
         onSubmit: (values) => {
             let formData = new FormData();
@@ -45,9 +43,6 @@ const EditUser = (props) => {
             
 
             dispatch(capNhatThongTinNguoiDungAction(formData));
-            // dispatch(layThongTinNguoiDungDanngNhapAction(userLogin.taiKhoan))
-
-            // history.push('/user/thongtintaikhoan')
         },
     });
 
@@ -71,7 +66,7 @@ const EditUser = (props) => {
                 onValuesChange={onFormLayoutChange}
                 size={componentSize}
             >
-                <h3 style={{ fontSize: 25 }}>Thay đổi thông tin tài khoản</h3>
+                <h3 style={{ fontSize: 25 ,color: "white" }}>Thay đổi thông tin tài khoản</h3>
                 <Form.Item label="Tài Khoản" >
                     <Input name='taiKhoan' onChange={formik.handleChange} value={formik.values.taiKhoan} className="form-control bg-transparent text-center" />
                 </Form.Item>

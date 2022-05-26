@@ -27,7 +27,7 @@ export default function Login(props) {
     },
   });
   return (
-    <div className="right-content">
+    <div className="content">
       <h3 className="form-title">Đăng Nhập</h3>
 
       <form onSubmit={(e) => {

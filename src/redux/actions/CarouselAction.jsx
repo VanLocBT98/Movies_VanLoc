@@ -16,5 +16,6 @@ export const getCarouselAction =async (dispatch) =>{
     }
     catch(err){
       console.log(err);
+      dispatch(hidenLoading())
     }
   }

@@ -9,7 +9,8 @@ if(localStorage.getItem(USER_LOGIN)){
 const stateDefault = {
     userLogin :user,
     thongTinNguoiDung :{
-    }
+    },
+    thongTinNguoiDungCapNhat :{}
 }
 export const QuanLyNguoiDungReducer = (state= stateDefault,action) =>{
     switch(action.type){
@@ -21,16 +22,11 @@ export const QuanLyNguoiDungReducer = (state= stateDefault,action) =>{
         }
         case SET_THONG_TIN_NGUOI_DUNG :{
 
-            state.thongTinNguoiDung = action.thongTinNguoiDung
-            localStorage.setItem(
-                USER_LOGIN,
-                JSON.stringify(action.thongTinNguoiDung)
-              );
-              localStorage.setItem(TOKEN, action.thongTinNguoiDung.accessToken);
+            state.thongTinNguoiDung = action.thongTinNguoiDung;
             return {...state}
         }
         case SET_THONG_TIN_NGUOI_DUNG_DANG_NHAP:{
-            state.userLogin = action.userLogin
+            state.thongTinNguoiDungCapNhat = action.thongTinNguoiDungCapNhat
         }
 
         default: return { ...state }

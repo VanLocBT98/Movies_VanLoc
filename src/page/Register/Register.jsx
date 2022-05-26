@@ -58,7 +58,7 @@ export default function Register(props) {
     },
   });
   return (
-    <div className="right-content">
+    <div className="content">
             <h3 className="form-title">Đăng Ký</h3>
             <form onSubmit={(e)=>{
               formik.handleSubmit(e)

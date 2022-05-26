@@ -21,11 +21,19 @@
 
         &_card {
             width: 70%;
-
+            @include max(767px){
+                display:block !important;
+            }
+            @include max(567px){
+                width:100%;
+            }
             img {
                 border-radius: 5px;
                 width: 215px;
                 height: 320px;
+                @include max(767px){
+                    margin: auto;
+                }
             }
 
             &_title {
@@ -58,13 +66,18 @@
         &_rating {
             width: 30%;
             text-align: center;
-
+            @include max(567px){
+                display:none;
+            }
             &_star {
                 font-size: 25px;
                 color: yellow;
 
                 i {
                     padding: 5px;
+                    @include max(767px){
+                        padding: 1px;
+                    }
                 }
             }
 

@@ -1,12 +1,10 @@
 import React from 'react'
-import { Select, Form } from 'antd';
+import { Select} from 'antd';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { quanLyRapService } from '../../../../services/QuanLyRapServices'
 import { quanlyPhimService } from '../../../../services/QuanLyPhimServices';
 import { useEffect } from 'react';
 import { quanLydatVeServices } from '../../../../services/QuanLyDatVeService';
-import { USER_LOGIN } from '../../../../util/settings/Config';
 import Swal from 'sweetalert2'
 import { history } from '../../../../App';
 export default function SearchPhim() {
@@ -32,7 +30,7 @@ export default function SearchPhim() {
       }
     }
     fetchData()
-  }, [])
+  },[])
   // change selec
   const handleChangeDanhSachPhim = async (value) => {
     try {

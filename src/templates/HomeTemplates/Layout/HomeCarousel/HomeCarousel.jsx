@@ -4,13 +4,13 @@ import { useSelector,useDispatch } from 'react-redux';
 import { getCarouselAction } from '../../../../redux/actions/CarouselAction';
 import banner from '../../../../Json/banner.json'
 export default function HomeCarousel(props) {
-
-  const { arrBanner } = useSelector(state => state.CarouselReducer);
+  const [show, setShow] = useState(false);
   const dispatch = useDispatch()
   // call api render onlyone
-  useEffect( () =>{
-    dispatch(getCarouselAction)
-  },[])
+  // useEffect( () =>{
+  //   dispatch(getCarouselAction)
+  // },[])
+const [width, setWidth] = useState(window.innerWidth);
   useEffect(() => {
     const handleResize = () => {
         setWidth(window.innerWidth)
@@ -23,7 +23,6 @@ export default function HomeCarousel(props) {
 
     }
 }, [])
-const [width, setWidth] = useState(window.innerWidth);
 
   const renderBanner = () => {
     return banner.map((img, index) => {
@@ -46,25 +45,43 @@ const [width, setWidth] = useState(window.innerWidth);
         backgroundSize:'100%',
         backgroundRepeat: 'no-repeat',
       };
+      
       return (
-        
         <div key={index}>
           {width >= 992 ?  
           <div style={contentStyle } >
             <img src={img.hinhAnh} className='w-100' style={{opacity: 0}} />
+            <div className='titleCarousel '>
+              <h2>{img.tenPhim}</h2>
+              <p>{img.title}</p>
+            
+            </div>
+            <div className="overlaybutton">
+            <button onClick={() => setShow(true)}><i className="fa fa-play-circle"></i></button>
+            </div>
           </div> :
            <div style={contentStyle2} >
            <img src={img.hinhAnh} className='w-100' style={{opacity: 0}} />
+           <div className='titleCarousel '>
+              <h2>{img.tenPhim}</h2>
+              <p>{img.title}</p>
+            
+            </div>
+            <div className="overlaybutton">
+            <button onClick={() => setShow(true)}><i className="fa fa-play-circle"></i></button>
+            </div>
          </div>
           }
         </div>
+        
       )
+      
     })
+    
   }
   return (
     <div id='carousel'>
-
-    <Carousel effect='fade' autoplay >
+    <Carousel  effect='fade' autoplay >
       {renderBanner()}
     </Carousel>
     </div>

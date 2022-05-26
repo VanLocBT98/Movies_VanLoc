@@ -25,7 +25,7 @@ export default function Detail(props) {
                         <div className='detail_info_card_title'>
                             <p>{filmDetail.tenPhim}</p>
                             <p>Ngày Chiếu {moment(filmDetail.ngayKhoiChieu).format('DD-MM-YY ~ hh:mm A')}</p>
-                           <NavLink to ='/' className="detail_info_card_button">Đặt Vé</NavLink>
+                           <a  href="#detail_info_tabs" className="detail_info_card_button">Đặt Vé</a>
                         </div>
                     </div>
                     <div className="detail_info_rating">
@@ -58,7 +58,7 @@ export default function Detail(props) {
                         <p>Số người đánh giá : {filmDetail.danhGia} người</p>
                     </div>
                 </div>
-                <div className="detail_info_tabs container">
+                <div className="detail_info_tabs container" id="detail_info_tabs">
                     <Tabs defaultActiveKey="1" centered>
                         <TabPane tab="Lịch Chiếu" key="1">
                             {filmDetail.heThongRapChieu?.length!==0 ? 
@@ -84,7 +84,7 @@ export default function Detail(props) {
                                                 <div className="row text-left detail_info_tabs_time_row">
                                                     {cumRap.lichChieuPhim?.slice(0,9).map((lichChieu,index) => {
                                                         return (
-                                                            <NavLink to= {`/checkout/${lichChieu.maLichChieu}`} className='detail_info_tabs_time_row_col col-3' key={index} >
+                                                            <NavLink to= {`/checkout/${lichChieu.maLichChieu}`} className='detail_info_tabs_time_row_col col-sm-3 col-4 ' key={index} >
                                                                 {moment(lichChieu.ngayChieuGioChieu).format('DD-MM-YY ')}
                                                                 ~<span>{moment(lichChieu.ngayChieuGioChieu).format(' hh:mm A')}</span>
 

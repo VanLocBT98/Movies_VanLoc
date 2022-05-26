@@ -21,6 +21,8 @@ export const layChiTietphongVeAction = (maPhongVe) =>{
          }
          catch(err){
              console.log(err.response?.data)
+            dispatch(hidenLoading())
+
          }
      }
 }
@@ -43,8 +45,12 @@ export const datVeAction = (thongTinDatVe = new ThongTinDatVe()) =>{
            })
         }
         catch(err){
+            if(err.status == 401){
+                alert('lỗi')
+            }
             dispatch(hidenLoading())
             console.log(err.response?.data)
+            
         }
     }
 }

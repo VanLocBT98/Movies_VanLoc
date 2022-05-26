@@ -20,10 +20,9 @@ import ThongTintaikhoan from './page/Admin/User/User';
 import AddNewFilm from './page/Admin/Film/addNewFilm/AddNewFilm';
 import Edit from './page/Admin/Film/Edit/EditFilm';
 import Showtime from './page/Admin/Film/Showtime/Showtime';
-import {Historybooking} from './page/Checkout/Checkout'
 import {CheckUserTemplates} from './templates/CheckUserTemplate/CheckUserTemplate'
 import EditUser from './page/Admin/User/EditUser';
-import TextField from './page/Login/TextField';
+import HistoryBooking from './page/HistoryBooking/HistoryBooking';
 const CheckoutTemplateLazy = lazy(()=>import ('./templates/CheckoutTemplate/CheckoutTemplate'))
 
 
@@ -53,7 +52,7 @@ function App() {
       <UserTemplates path="/login" exact Component={Login} />
 
       <UserTemplates path="/register" exact Component={Register} />
-      <Route path='/historybooking' exact component={Historybooking} />
+      <Route path='/historybooking' exact component={HistoryBooking} />
       <CheckUserTemplates path='/user/thongtintaikhoan' exact Component={ThongTintaikhoan} />
       <CheckUserTemplates path='/user/edit' exact Component={EditUser} />
     {/* <Suspense  fallback={<h3>Loading....</h3>}>

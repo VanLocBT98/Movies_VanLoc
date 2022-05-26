@@ -19,6 +19,10 @@
     display:flex;
     justify-content: space-between;
     align-items: center;
+    @include max(567px){
+      height: 55px;
+
+  }
     .navbar-brand{
         cursor: pointer;
         img{

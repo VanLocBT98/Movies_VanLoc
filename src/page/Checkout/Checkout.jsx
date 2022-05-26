@@ -1,4 +1,4 @@
-import React, { Fragment, memo, useEffect } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { layChiTietphongVeAction, chonGheAction, datVeAction, chuyentabsAction, datGheAction } from '../../redux/actions/QuanLyDatVeAction';
 import { ThongTinDatVe } from '../../_core/models/ThongTinDatVe';
@@ -9,18 +9,19 @@ import {
 } from "@ant-design/icons";
 import _ from "lodash";
 import { Tabs } from 'antd';
-import { layThongTinNguoiDungAction } from '../../redux/actions/QuanLyNguoiDungAction';
-import moment from 'moment';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Prompt } from 'react-router-dom';
 import { connection } from '../../index'
-import { Back } from '../Admin/Film/Film';
+import { useState } from 'react';
+import HistoryBooking from '../HistoryBooking/HistoryBooking';
 
 const { TabPane } = Tabs;
 function Checkout(props) {
+  const [datve, setDatve]= useState([true])
   const { userLogin } = useSelector(state => state.QuanLyNguoiDungReducer)
   const { chiTietPhongVe, danhSachGheDangDat, danhSachGheKhachDat } = useSelector(state => state.QuanLyDatVeReducer)
   // console.log(userLogin);
   const dispatch = useDispatch();
+ 
   useEffect(() => {
     window.scrollTo(0, 0)
   },[])
@@ -229,6 +230,7 @@ function Checkout(props) {
                   thongTinDatVe.maLichChieu = props.match.params.id;
                   thongTinDatVe.danhSachVe = danhSachGheDangDat;
                   dispatch(datVeAction(thongTinDatVe))
+                  setDatve(false);
                 }}
               >ĐẶT VÉ</button> :
                 <button
@@ -244,6 +246,12 @@ function Checkout(props) {
 
         </div>
       </div>
+      
+    <Prompt
+      when={datve}
+      message={location => ('Bạn thực sự muốn rời khỏi trang ???')}
+
+    />
     </div>
   )
 }
@@ -265,72 +273,67 @@ export default function (props) {
           <Checkout {...props} />
         </TabPane>
         <TabPane tab="02 KẾT QUẢ ĐẶT VÉ" key="2" >
-          <Historybooking {...props} />
+          <HistoryBooking {...props} />
         </TabPane>
       </Tabs>
 
 
       <div className="absolute top-[48px] right-[85px] md:top-[2px] md:right-[28px] cursor-pointer">
         <NavLink to='/' >
-          <img className="w-[55px] md:w-[44px]" src='http://tixvn.click/static/media/logo.af00d8dd04677a4ee789.png' alt-='..' />
+          <img  className="w-[55px] md:w-[44px]" src='http://tixvn.click/static/media/logo.af00d8dd04677a4ee789.png' alt-='..' />
         </NavLink>
       </div>
     </div>
 
   )
 }
-export function Historybooking(props) {
-  const { thongTinNguoiDung, userLogin } = useSelector(state => state.QuanLyNguoiDungReducer)
-  // console.log(userLogin)
-  const dispatch = useDispatch();
-  useEffect(() => {
+// export function Historybooking(props) {
+//   const { thongTinNguoiDung, userLogin } = useSelector(state => state.QuanLyNguoiDungReducer)
+//   // console.log(userLogin)
+//   const dispatch = useDispatch();
+//   useEffect(() => {
 
-    dispatch(layThongTinNguoiDungAction())
-  }, [])
-  const renderTicketFilm = () => {
-    return thongTinNguoiDung.thongTinDatVe?.map((ticket, index) => {
-      const seats = _.first(ticket.danhSachGhe)
-      return (
+//     dispatch(layThongTinNguoiDungAction())
+//   }, [])
+//   const renderTicketFilm = () => {
+//     return thongTinNguoiDung.thongTinDatVe?.map((ticket, index) => {
+//       const seats = _.first(ticket.danhSachGhe)
+//       return (
         
-        <div className="p-2 lg:w-1/3 md:w-1/2 w-full" key={index}>
-          <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-            <img alt="team" className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src={ticket.hinhAnh} />
-            <div className="flex-grow">
-              <h2 className="text-gray-900 title-font font-medium">{ticket.tenPhim}</h2>
-              <p className="text-gray-500">Ngày đặt :{moment(ticket.ngayDat).format('DD-MM-YYYY ~ hh:mm A')}</p>
-              <p>Địa điểm:{seats.tenHeThongRap} </p>
-              <p className=' text-green-500'> {seats.tenCumRap} - Ghế số : {_.sortBy(ticket.danhSachGhe, ['maGhe']).map((soghe, index) => {
-                return (
-                  <span key={index} > {soghe.tenGhe},</span>
-                )
-              })}</p>
-            </div>
-          </div>
-        </div>
-      )
-    })
-  }
-  return (
-    <Fragment>
-      <Fragment>
+//         <div className="p-2 lg:w-full md:w-1/2 w-1/3" key={index}>
+//           <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+//             <img alt="team" className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src={ticket.hinhAnh} />
+//             <div className="flex-grow">
+//               <h2 className="text-gray-900 title-font font-medium">{ticket.tenPhim}</h2>
+//               <p className="text-gray-500">Ngày đặt :{moment(ticket.ngayDat).format('DD-MM-YYYY ~ hh:mm A')}</p>
+//               <p>Địa điểm:{seats.tenHeThongRap} </p>
+//               <p className=' text-green-500'> {seats.tenCumRap} - Ghế số : {_.sortBy(ticket.danhSachGhe, ['maGhe']).map((soghe, index) => {
+//                 return (
+//                   <span key={index} > {soghe.tenGhe},</span>
+//                 )
+//               })}</p>
+//             </div>
+//           </div>
+//         </div>
+//       )
+//     })
+//   }
+//   return (
+   
+//     <div>
+//       <section className="text-gray-600 body-font">
+//         <div className="container px-5 py-24 mx-auto">
+//           <div className="flex flex-col text-center w-full mb-20">
+//             <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-[#fb4226]">Kết Quả Đặt Vé</h1>
+//           </div>
+//           <div className="flex flex-wrap -m-2">
 
-      <Back />
-      </Fragment>
-    <div>
-      <section className="text-gray-600 body-font">
-        <div className="container px-5 py-24 mx-auto">
-          <div className="flex flex-col text-center w-full mb-20">
-            <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-[#fb4226]">Kết Quả Đặt Vé</h1>
-          </div>
-          <div className="flex flex-wrap -m-2">
+//             {renderTicketFilm()}
 
-            {renderTicketFilm()}
+//           </div>
+//         </div>
+//       </section>
 
-          </div>
-        </div>
-      </section>
-
-    </div>
-    </Fragment>
-  )
-}
+//     </div>
+//   )
+// }

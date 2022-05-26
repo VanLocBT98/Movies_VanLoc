@@ -14,7 +14,7 @@
 .loading-spinners {
     position: fixed;
     width: 100%;
-    z-index: 909;
+    z-index: 909999;
     height: 100%;
 background-color: white;
     @include max(576px) {

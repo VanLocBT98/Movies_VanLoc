@@ -9,7 +9,7 @@ export const layDanhSachPhimAction = (tenPhim ='')=>{
     
     try{
       
-      // dispatch(displayLoading())
+      dispatch(displayLoading())
         const result = await quanlyPhimService.layDanhSachPhim(tenPhim)
         // đưa lên reducer is
         dispatch({
@@ -17,10 +17,12 @@ export const layDanhSachPhimAction = (tenPhim ='')=>{
           arrFilm:result.data.content
         })
         
-        // dispatch(hidenLoading())
+        dispatch(hidenLoading())
       }
       catch(err){
         console.log(err);
+        dispatch(hidenLoading())
+
       }
     }
 }
@@ -38,19 +40,14 @@ export const listFilmSapChieu =()=>{
 export const themPhimUpLoadHinhAnhAction = (formData)=>{
   return async (dispatch) =>{
     try {
-      // dispatch(displayLoading())
+      dispatch(displayLoading())
       const result = await quanlyPhimService.themPhimUpLoadHinh(formData)
-      console.log(result.data.content)
-      // đưa lên reducer is
-      // dispatch({
-      //   type: LIST_FILM,
-      //   arrFilm:result.data.content
-      // })
       
-      // dispatch(hidenLoading())
+      dispatch(hidenLoading())
     }
     catch (err) {
       console.log(err.response?.data)
+      dispatch(hidenLoading())
     }
   }
 }
@@ -58,19 +55,20 @@ export const layThongTinPhimAction = (maPhim)=>{
   return async (dispatch) =>{
     try{
       
-      // dispatch(displayLoading())
-      const result = await quanlyPhimService.layThonngTinPhim(maPhim)
-      console.log(result.data.content)
+      dispatch(displayLoading())
+      const result = await quanlyPhimService.layThongTinPhim(maPhim)
       dispatch({
         type:SET_THONG_TIN_FILM,
         thongTinPhim:result.data.content
       })
       
    
-      // dispatch(hidenLoading())
+      dispatch(hidenLoading())
     }
     catch(err){
       console.log(err.response?.data)
+      dispatch(hidenLoading())
+
     }
   }
 }

@@ -27,8 +27,18 @@ section{
                 color:$primary-color !important;
                 border-bottom: 2px solid $primary-color;
             }
+             @include max(495px){
+              font-size:17px;
+        }
+        @include max(400px){
+          font-size:12px;
+    }
+            
         }
        
+        @include max(495px){
+          padding: 0 20px;
+    }
     }
 }
 .nav-tabs{
@@ -200,22 +210,4 @@ button{
         }
       }
     }
-    // @include respond-to("medium") {
-    //   .adsNews {
-    //     .tab-content {
-    //       .tab-pane {
-    //         .row {
-    //           .abv {
-    //             .abv_item1 {
-    //               padding: 20px;
-    //             }
-    //             .abv_item2 {
-    //               padding: 20px;
-    //             }
-    //           }
-    //         }
-    //       }
-    //     }
-    //   }
-    // }
   }
