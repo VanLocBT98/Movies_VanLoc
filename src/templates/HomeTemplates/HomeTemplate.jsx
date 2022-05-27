@@ -9,6 +9,9 @@ import { useEffect } from 'react';
     useEffect(() => {
         window.scrollTo(0,0)
     })
+    useEffect(() => {
+        document.title="Project Movies !"
+    },[])
     return < Route {...restProps} render={(propsRoute)=>{ // propsRoute trả ra props.localtion ,props.match, props.hisrory
         return  <>
             <Header {...propsRoute}  />

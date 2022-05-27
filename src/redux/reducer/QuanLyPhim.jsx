@@ -40,7 +40,9 @@ export const QuanLyFilmReducer = (state= stateDefault,action) =>{
             state.thongTinPhim = action.thongTinPhim;
             return { ...state}
         }
-
+        case "RESTART__MOVIE": {
+            return { ...state };
+          }
         default: return { ...state}
     }
 }

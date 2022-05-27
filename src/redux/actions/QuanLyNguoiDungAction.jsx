@@ -1,5 +1,5 @@
 import { quanlyNguoiService } from '../../services/QuanLyNguoiDung'
-import { DANG_NHAP, SET_THONG_TIN_NGUOI_DUNG, SET_THONG_TIN_NGUOI_DUNG_DANG_NHAP } from '../types/QuanLyNguoiDungType'
+import { DANG_NHAP, SET_THONG_TIN_NGUOI_DUNG, SET_THONG_TIN_NGUOI_DUNG_DANG_NHAP,SET_DANH_SACH_NGUOI_DUNG } from '../types/QuanLyNguoiDungType'
 import { history } from '../../App'
 import { displayLoading, hidenLoading } from '../actions/LoadingAction';
 import Swal from 'sweetalert2'
@@ -106,7 +106,7 @@ export const capNhatThongTinNguoiDungAction = (formData) => {
             }
         }
         catch (e) {
-            if(e.response?.status == 400){
+            if(e.response?.status === 400){
                 Swal.fire({
                     icon: "error",
                     title: "Cập nhật thất bại!",
@@ -143,3 +143,65 @@ export const DangKyAction = (thongTinDangKy) => {
         }
     };
 };
+export const themNguoiDungAction = (formdata) => {
+    return async (dispatch) => {
+        try {
+            const res = await quanlyNguoiService.themNguoiDung(formdata);
+            // console.log(res);
+            if (res.status === 200) {
+
+                Swal.fire({
+                    icon: "success",
+                    title: "Đăng ký thành công! ",
+                });
+
+            }
+        } catch (error) {
+            Swal.fire({
+                icon: "error",
+                title: "Đăng ký thất bại!",
+                text: `${error.response?.data.content}`,
+            });
+            console.log(error);
+        }
+    };
+};
+export const layDanhSachNguoiDungAction = (tuKhoa="") => {
+    return async (dispatch) => {
+        try {
+            // dispatch(displayLoading())
+            const result = await quanlyNguoiService.layDanhSachNguoiDung(tuKhoa);
+            // console.log(result)
+                dispatch({
+                    type: SET_DANH_SACH_NGUOI_DUNG,
+                   arrUser: result.data.content
+                })
+            
+
+               dispatch(hidenLoading())
+        }
+        catch (e) {
+            console.log(e.response?.data)
+            dispatch(hidenLoading())
+        }
+    }
+}
+export const XoaNguoiDungAction =(taiKhoan) =>{
+    return async (dispatch) =>{
+      try{
+        
+        // dispatch(displayLoading())
+        const result = await quanlyNguoiService.xoaNguoiDung(taiKhoan);
+        Swal.fire({
+          icon: "success",
+          title: "hoàn tất",
+          text: "Bạn đã xóa người này thành công",
+        });
+        dispatch(layDanhSachNguoiDungAction())
+      }
+      catch(err){
+        console.log(err.response?.data)
+      }
+  
+    }
+  }

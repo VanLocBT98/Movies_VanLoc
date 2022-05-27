@@ -1,13 +1,10 @@
 import { Fragment, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Redirect, Route } from "react-router";
-import { TOKEN, USER_LOGIN } from "../../util/settings/Config";
+import {  USER_LOGIN } from "../../util/settings/Config";
 import { Layout, Menu, Breadcrumb } from 'antd';
 import {
-    DesktopOutlined,
-    PieChartOutlined,
     FileOutlined,
-    TeamOutlined,
     UserOutlined,
 } from '@ant-design/icons';
 import { NavLink } from "react-router-dom";
@@ -50,16 +47,15 @@ const AdminTemplate = (props) => { //path, exact, Component
     const operations = <Fragment >
         {!_.isEmpty(userLogin) ? <Fragment> 
             <button style={{  height: 50, display: 'flex', justifyContent: 'center', alignItems: 'center' }} className="text-xl  rounded-full   m-0 " onClick={() => {
-            history.push('/profile')
+            history.push('/user/thongtintaikhoan')
         }}> 
-        <span >Hello ! {userLogin.taiKhoan.substr(0, 1)}
+        <span >Hello ! {userLogin.hoTen}
         </span>
         </button> 
         <button onClick={() => {
-            localStorage.removeItem(USER_LOGIN);
-            localStorage.removeItem(TOKEN);
+            (localStorage.removeItem(USER_LOGIN))
             history.push('/home');
-            window.location.reload();
+            // window.location.reload();
         }} style={{  height: 50, display: 'flex', justifyContent: 'center', alignItems: 'center' }} className="text-[14px]  rounded-full  m-0 ">Đăng xuất</button> 
         </Fragment> : ''}
     </Fragment>
@@ -77,27 +73,23 @@ const AdminTemplate = (props) => { //path, exact, Component
                         </NavLink>
                     </div>
                     <Menu theme="dark" defaultSelectedKeys={['sub1']} mode="inline">
-                        <SubMenu key="sub1" icon={<FileOutlined />} title="Films">
+                    <SubMenu key="2" icon={<FileOutlined />} title="Quan Lý Người Dùng">
+                    <Menu.Item key="1" icon={<UserOutlined />}>
+                            <NavLink to="/admin/adminusers">Danh Sách Người Dùng</NavLink>
+                        </Menu.Item>
+                            <Menu.Item key="9" icon={<FileOutlined />}>
+                            <NavLink to="/admin/adminusers/addnewuser">Thêm Người Dùng</NavLink>
+                            </Menu.Item>
+                        </SubMenu>
+                        <SubMenu key="sub1" icon={<FileOutlined />} title="Quản Lý Phim">
                             <Menu.Item key="10" icon={<FileOutlined />}>
-                                <NavLink to="/admin/films">Films</NavLink>
+                                <NavLink to="/admin/films">Danh Sách Phim</NavLink>
                                
                             </Menu.Item>
                             <Menu.Item key="11" icon={<FileOutlined />}>
-                            <NavLink to="/admin/films/addnewfilm">Add new</NavLink>
+                            <NavLink to="/admin/films/addnewfilm">Thêm Phim Mới</NavLink>
                             </Menu.Item>
                         </SubMenu>
-                        {/* <SubMenu key="sub1" icon={<UserOutlined />} title="User">
-                            <Menu.Item key="3">Tom</Menu.Item>
-                            <Menu.Item key="4">Bill</Menu.Item>
-                            <Menu.Item key="5">Alex</Menu.Item>
-                        </SubMenu>
-                        <SubMenu key="sub2" icon={<TeamOutlined />} title="Team">
-                            <Menu.Item key="6">Team 1</Menu.Item>
-                            <Menu.Item key="8">Team 2</Menu.Item>
-                        </SubMenu>
-                        <Menu.Item key="9" icon={<FileOutlined />}>
-                            Files
-                        </Menu.Item> */}
                     </Menu>
                 </Sider>
                 <Layout className="site-layout">

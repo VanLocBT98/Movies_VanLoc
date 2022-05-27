@@ -81,7 +81,7 @@
 .card-film {
     
     width: 260px;
-    transition:  all 0.5s linear;
+    transition:all .7s;
     margin: auto;
     cursor: pointer;
 
@@ -154,6 +154,7 @@
         height: 60px;
         display: none;
         margin: 11px 0 42px;
+        border-radius: 10px;
     }
     &:hover &_button-booking {
         display: block;

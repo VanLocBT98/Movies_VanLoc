@@ -1,0 +1,43 @@
+.adminUser{
+    .ant-table-pagination-right {
+        justify-content: center !important;
+    }
+    .ant-pagination-item-link,button{
+        margin:0;
+    }
+    .anticon{
+        vertical-align: 0 !important;
+    }
+    .ant-input:focus{
+        box-shadow: 0 0 0 2px rgb(251 66 38 / 20%);
+    }
+    .ant-input-group > .ant-input:first-child
+    {
+        border-color: $primary-color!important;
+    border-radius: 20px 0 0  20px;
+    }
+    .ant-input-search > .ant-input-group > .ant-input-group-addon:last-child .ant-input-search-button {
+        border-radius:0 20px 20px 0;
+        border-color: $primary-color!important;
+    }
+    .anticon svg{
+        font-size:20px;
+        border: none;
+    }
+    
+}
+.pushUser{
+    .form-title{
+        font-size:30px;
+        font-weight: bold;
+        text-align: center;
+    }
+    .signin{
+        text-align: center;
+    }
+    select{
+        height: 40px;
+        border: 1px solid #ced4da;
+    }
+    
+}

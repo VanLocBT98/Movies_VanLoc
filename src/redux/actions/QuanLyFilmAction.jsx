@@ -5,11 +5,9 @@ import { history } from '../../App';
 import Swal from 'sweetalert2';
 export const layDanhSachPhimAction = (tenPhim ='')=>{
     return async (dispatch)=>{
-
-    
     try{
       
-      dispatch(displayLoading())
+      // dispatch(displayLoading())
         const result = await quanlyPhimService.layDanhSachPhim(tenPhim)
         // đưa lên reducer is
         dispatch({
@@ -97,7 +95,7 @@ export const XoaPhimAction =(maPhim) =>{
       // dispatch(displayLoading())
       const result = await quanlyPhimService.xoaPhim(maPhim);
       Swal.fire({
-        icon: "error",
+        icon: "success",
         title: "hoàn tất",
         text: "Bạn đã xóa phim thành công",
       });

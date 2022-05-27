@@ -122,13 +122,13 @@ export default function SearchPhim() {
         
         <div className='search-phim-container-item'>
 
-          <Select placeholder="Vui lòng Chọn Ngày Chiếu"  onChange={handleChangeGioChieu}>
+          <Select placeholder="Vui lòng Chọn Suất Chiếu"  onChange={handleChangeGioChieu}>
             <Option value= {state.ngayChieu?.thongTinPhim?.maLichChieu}>
-              {state.ngayChieu?.thongTinPhim?.ngayChieu}
+             {state.ngayChieu?.thongTinPhim?.ngayChieu} - {state.ngayChieu?.thongTinPhim?.gioChieu}
             </Option>
           </Select>
         </div>
-        <div className='search-phim-container-item'>
+        {/* <div className='search-phim-container-item'>
 
           <Select placeholder="Vui lòng Chọn Giờ Chiếu">
           <Option value= {state.suatChieu?.thongTinPhim?.maLichChieu}>
@@ -136,7 +136,7 @@ export default function SearchPhim() {
             </Option>
 
           </Select>
-        </div>
+        </div> */}
         <div className='search-phim-container-item'>
           <button onClick={()=>{ handleSubmit()}}> Đặt Vé</button>
         </div>

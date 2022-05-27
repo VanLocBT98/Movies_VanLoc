@@ -3,12 +3,11 @@ import {useDispatch, useSelector} from 'react-redux'
 import {NavLink} from 'react-router-dom'
 import { GROUPID } from '../../util/settings/Config'; 
 import { useFormik } from 'formik';
-import {DangKyAction,dangKyNguoiDungAction} from '../../redux/actions/QuanLyNguoiDungAction';
+import {DangKyAction} from '../../redux/actions/QuanLyNguoiDungAction';
 import * as Yup from "yup";
 
 export default function Register(props) {
   const dispatch = useDispatch()
-  const {userLogin} = useSelector(state => state.QuanLyNguoiDungReducer);
   const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
   const formik = useFormik({
     initialValues: {

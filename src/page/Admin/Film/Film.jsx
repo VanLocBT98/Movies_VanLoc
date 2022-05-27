@@ -5,6 +5,7 @@ import { AudioOutlined, EditOutlined, SearchOutlined, DeleteOutlined, CalendarOu
 import { useDispatch, useSelector } from 'react-redux';
 import { layDanhSachPhimAction, XoaPhimAction } from '../../../redux/actions/QuanLyFilmAction'
 import { history } from '../../../App';
+import Swal from 'sweetalert2';
 
 export default function Film(props) {
 
@@ -81,14 +82,25 @@ export default function Film(props) {
       dataIndex: "maPhim",
       render: (text, film) => {
         return <Fragment>
-          <NavLink key={1} to={`/admin/films/edit/${film.maPhim}`} className="text-white bg-sky-700 p-2 mx-2 text-xl"><EditOutlined /></NavLink>
-          <span key={2} onClick={() => {
-            if (window.confirm('Bạn có chắc chắn muốn xóa phim : ' + film.tenPhim + ' này không ?')) {
-              dispatch(XoaPhimAction(film.maPhim))
-
-            }
-          }} className="text-white bg-red-700 p-2 text-xl"><DeleteOutlined /></span>
-          <NavLink key={3} to={`/admin/films/showtime/${film.maPhim}/${film.tenPhim}`} className="text-white bg-green-700 p-2 mx-2 text-xl"><CalendarOutlined /></NavLink>
+          <NavLink key={1} to={`/admin/films/edit/${film.maPhim}`} className="text-sky-700 p-2 mx-2 text-xl"><EditOutlined /></NavLink>
+          <span key={2}
+          onClick={() => {
+            Swal.fire({
+              title: "Bạn chắc chắn xóa phim này?",
+              text: "Thao tác này sẽ xóa toàn bộ dữ liệu về bộ phim",
+              icon: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#28a745",
+              cancelButtonColor: "#dc3545",
+              confirmButtonText: "Xóa phim!",
+            }).then((result)=>{
+              if(result.isConfirmed){
+                dispatch(XoaPhimAction(film.maPhim))
+              }
+            });
+          }}
+           className="text-red-700  p-2 text-xl "><DeleteOutlined /></span>
+          <NavLink key={3} to={`/admin/films/showtime/${film.maPhim}/${film.tenPhim}`} className="text-green-700 p-2 mx-2 text-xl"><CalendarOutlined /></NavLink>
         </Fragment>
 
       }
@@ -122,13 +134,14 @@ export default function Film(props) {
         }}
       >Thêm Phim</Button>
       <Search
-        placeholder="input search text"
+      className="mb-3"
+        placeholder="Nhập tên phim cần tìm kiếm"
         enterButton={<SearchOutlined />}
         size="large"
         onChange={(e) => onSearch(e)}
       />
 
-      <Table columns={columns} dataSource={data} onChange={onChange} rowKey={"maPhim"} />;
+      <Table columns={columns} dataSource={data} onChange={onChange} rowKey={"maPhim"} columnKey="maPhim" />;
     </div>
   )
 }
