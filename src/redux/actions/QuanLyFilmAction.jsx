@@ -1,4 +1,4 @@
-import {LIST_FILM,SET_FILM_DANG_CHIEU,SET_FILM_SAP_CHIEU, SET_THONG_TIN_FILM} from '../types/QuanLyPhimType'
+import {LIST_FILM,SET_FILM_DANG_CHIEU, SET_THONG_TIN_FILM} from '../types/QuanLyPhimType'
 import { quanlyPhimService } from '../../services/QuanLyPhimServices'
 import {displayLoading, hidenLoading} from '../actions/LoadingAction'
 import { history } from '../../App';

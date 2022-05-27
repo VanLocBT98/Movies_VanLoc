@@ -1,13 +1,11 @@
-import React,{ useState , useEffect, Fragment} from 'react'
+import React,{ useEffect, Fragment} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { layDanhSachNguoiDungAction, XoaNguoiDungAction } from '../../../redux/actions/QuanLyNguoiDungAction';
 import { Table,Button,Input } from 'antd';
-import { AudioOutlined, EditOutlined, SearchOutlined, DeleteOutlined, CalendarOutlined } from '@ant-design/icons';
+import {  EditOutlined, SearchOutlined, DeleteOutlined } from '@ant-design/icons';
 import { Back } from '../Film/Film';
 import { history } from '../../../App';
 import Swal from 'sweetalert2';
-import { NavLink } from 'react-router-dom';
-import PageNotFound from '../../PageNotFound/PageNotFound';
 export default function AdminUser() {
   const dispatch = useDispatch()
   const {arrUser} = useSelector(state=> state.QuanLyNguoiDungReducer)

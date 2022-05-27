@@ -9,7 +9,7 @@ import { HomeTemplates } from './templates/HomeTemplates/HomeTemplate';
 import Detail from './page/Detail/Detail';
 import CheckoutTemplate from './templates/CheckoutTemplate/CheckoutTemplate';
 import Checkout from './page/Checkout/Checkout';
-import { Suspense,lazy } from 'react';
+import { lazy } from 'react';
 import { UserTemplates } from './templates/UserTemplates/Usertemplate';
 import AdminTemplate from './templates/AdminTemplate/AdminTemplate'
 import Loading from './component/Loading/Loading';
