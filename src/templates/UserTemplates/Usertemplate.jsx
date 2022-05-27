@@ -8,7 +8,7 @@ export const UserTemplates = (props) => {
 })
   return < Route {...restProps} render={(propsRoute) => { // propsRoute trả ra props.localtion ,props.match, props.hisrory
     return <>
-    <div className="form-bg">
+    <div className="form-bg" style={{ backgroundImage: "url('../img/background.jpg')", position: "fixed", height: '100%', width: '100%', backgroundSize: 'cover' }}>
   <div className="container">
     <div className="row">
       <div className="col-md-offset-12 col-md-12 col-sm-offset-12 col-sm-12">

@@ -18,8 +18,8 @@ export default function HistoryBooking() {
     return thongTinNguoiDung.thongTinDatVe?.map((ticket, index) => {
       const seats = _.first(ticket.danhSachGhe)
       return (
-        
-        <div className="p-2 lg:w-full md:w-1/2 w-1/3" key={index}>
+        <>
+        {/* <div className="p-2 lg:w-full md:w-1/2 w-1/3" key={index}>
           <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
             <img alt="team" className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src={ticket.hinhAnh} />
             <div className="flex-grow">
@@ -33,7 +33,20 @@ export default function HistoryBooking() {
               })}</p>
             </div>
           </div>
-        </div>
+        </div> */}
+       <tr key={index}>
+         <td> <img alt="team" style={{width: '50px', height: '50px',borderRadius:"50%"}} src={ticket.hinhAnh} /></td>
+         <td>{ticket.tenPhim}</td>
+         <td>{moment(ticket.ngayDat).format('DD-MM-YYYY ~ hh:mm A')}</td>
+         <td>{seats.tenHeThongRap}</td>
+         <td> {seats.tenCumRap} - Ghế số : {_.sortBy(ticket.danhSachGhe, ['maGhe']).map((soghe, index) => {
+                return (
+                  <span key={index} > {soghe.tenGhe},</span>
+                )
+              })}</td>
+       </tr>
+        </>
+        
       )
     })
   }
@@ -49,10 +62,21 @@ export default function HistoryBooking() {
         <div className="flex flex-col text-center w-full mb-20">
           <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-[#fb4226]">Kết Quả Đặt Vé</h1>
         </div>
-        <div className="flex flex-wrap -m-2">
+        <div className="">
 
+          <table className="table">
+          <thead>
+            <th>Hình Ảnh</th>
+            <th>Tên Phim</th>
+            <th> Ngày đặt</th>
+            <th> Địa chỉ</th>
+            <th>Số Ghế</th>
+          </thead>
+          <tbody>
           {renderTicketFilm()}
 
+          </tbody>
+        </table>
         </div>
       </div>
     </section>

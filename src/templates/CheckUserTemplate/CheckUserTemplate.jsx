@@ -8,10 +8,7 @@ export const CheckUserTemplates = (props) => {
   return < Route {...restProps} render={(propsRoute) => {
    // propsRoute trả ra props.localtion ,props.match, props.hisrory
     return <>
-        <div style={{backgroundImage: 'url(http://tixvn.click/static/media/backapp.b46ef3a1ce082cecae80.jpg)',backgroundSize:'contain',
-    backgroundAttachment: 'fixed',
-    height: '100%',
-    width: '100%',paddingBottom: '30%'}}
+        <div style={{ backgroundImage: "url('../img/background.jpg')", position: "fixed", height: '100%', width: '100%', backgroundSize: 'cover' }}
     className="userCheck"
     >
          
