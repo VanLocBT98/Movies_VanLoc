@@ -104,7 +104,7 @@ export default function Header(props) {
                     <div className={"loginUser"} >
                         {(!localStorage.getItem(USER_LOGIN)) ? <Fragment>
                             <button onClick={() => { history.push('/login') }} className="header__top--login pr-2">
-                                <span>Dăng Nhập</span>
+                                <span>Đăng Nhập</span>
                             </button>
                             <hr className="space" />
                             <button onClick={() => { history.push('/register') }} className="header__top--login pl-2">
