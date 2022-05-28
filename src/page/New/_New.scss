@@ -17,6 +17,7 @@ section {
         &:hover {
           font-size: 24px;
           color: $primary-color  !important;
+         
         }
 
         &.active {
@@ -26,10 +27,16 @@ section {
 
         @include max(495px) {
           font-size: 17px;
+          &:hover{
+            font-size: 17px;
+          }
         }
 
         @include max(400px) {
           font-size: 12px;
+          &:hover{
+            font-size: 12px;
+          }
         }
 
       }

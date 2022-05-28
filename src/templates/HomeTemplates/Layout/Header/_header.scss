@@ -180,7 +180,7 @@ body{
 	font-weight: 500;
 	font-size: 15px;
 	line-height: 1.4;
-	color: #fff;
+	color: rgba(255,255,255,.95);
 	background-color: #1f2029;
 	overflow-x: hidden;
   background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat-back.svg');
@@ -272,7 +272,7 @@ body{
 .section-dropdown {
   position: absolute;
   padding: 5px;
-  background-color: #fff;
+  background-color: rgba(255,255,255,.95);
   top: 95%;
   left: -80%;
   width: 205%;
@@ -284,6 +284,10 @@ body{
   pointer-events: none;
   transform: translateY(20px);
   transition: all 200ms linear;
+  @include max(390px){
+    left: -38%;
+    width: 164%;
+  }
   a {
     position: relative;
     color: #000;
