@@ -35,11 +35,10 @@ export default function User(props) {
           <label htmlFor='hoTen'>Họ và Tên</label>
           <input  name='hoTen' value={hoTen} id='hoTen' readOnly className="form-control bg-transparent text-red-500 w-[400px] font-semibold text-2xl text-center sm:w-[250px]" />
         </div>
-        {/* <div className="form-group">
-          <label htmlFor='matKhau'>Mật Khẩu</label>
-          <input  name='matKhau' value={matKhau} id='matKhau' readOnly type='password' className="form-control bg-transparent text-red-500 w-[400px] font-semibold text-2xl text-center sm:w-[250px]" />
-        </div> */}
+        <div className="form-group mt-5">
         <NavLink to='/user/edit' className='text-xl text-white py-2 border-2 border-rose-600 rounded-md hover:bg-[#fb4625]'>Thay đổi thông tin <i className="fa fa-arrow-right"></i> </NavLink>
+        </div>
+        
       </div>
     </div>
     </Fragment>
