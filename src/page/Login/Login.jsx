@@ -27,7 +27,7 @@ export default function Login(props) {
     },
   });
   return (
-    <div className="content">
+    <div className="content" style={{height:"100vh"}}>
       <h3 className="form-title">Đăng Nhập</h3>
 
       <form onSubmit={(e) => {
@@ -65,11 +65,6 @@ export default function Login(props) {
         </div>
         <a href="#" className="forgot">Forgot Password</a>
       </form>
-      <span className="separator">OR</span>
-      <ul className="social-links">
-        <li><a href='#'><i className="fab fa-google" /> Login with Google</a></li>
-        <li><a href='#'><i className="fab fa-facebook-f" /> Login with Facebook</a></li>
-      </ul>
       <span className="signup-link">Don't have an account? Sign up <NavLink to='/register'>here</NavLink></span>
 
 

@@ -112,11 +112,7 @@ export default function Register(props) {
               </div>
               <a href="#" className="forgot">Forgot Password</a>
             </form>
-            <span className="separator">OR</span>
-            <ul className="social-links">
-              <li><a href='#'><i className="fab fa-google" /> Login with Google</a></li>
-              <li><a href='#'><i className="fab fa-facebook-f" /> Login with Facebook</a></li>
-            </ul>
+            
             <span className="signup-link">Don't have an account? Sign up <NavLink to='/login'>here</NavLink></span>
          
 </div>
