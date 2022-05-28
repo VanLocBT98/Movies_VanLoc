@@ -69,7 +69,7 @@ const AdminTemplate = (props) => { //path, exact, Component
                     <div className="logo p-3 pl-4">
                         <NavLink to ='/'>
 
-                        <img src="http://tixvn.click/static/media/logo.af00d8dd04677a4ee789.png" width={50} alt="..." />
+                        <img src="../img/logo.png" width={50} alt="..." />
                         </NavLink>
                     </div>
                     <Menu theme="dark" defaultSelectedKeys={['sub1']} mode="inline">

@@ -15,7 +15,7 @@ const EditUser = (props) => {
     const { TextArea } = Input;
     const [componentSize, setComponentSize] = useState('default');
     const { thongTinNguoiDungCapNhat } = useSelector(state => state.QuanLyNguoiDungReducer)
-    console.log(thongTinNguoiDungCapNhat.taiKhoan)
+    // console.log(thongTinNguoiDungCapNhat.taiKhoan)
     const dispatch = useDispatch();
 
     const onFormLayoutChange = ({ size }) => {
@@ -39,8 +39,8 @@ const EditUser = (props) => {
         onSubmit: (values) => {
             let formData = new FormData();
             values.maNhom = GROUPID;
-            console.log( formData.values,values);
-            
+            console.log(formData.values, values);
+
 
             dispatch(capNhatThongTinNguoiDungAction(formData));
         },
@@ -50,43 +50,47 @@ const EditUser = (props) => {
     return (
         <Fragment>
             <Back />
-            <Form
 
-                onSubmitCapture={formik.handleSubmit}
-                labelCol={{
-                    span: 4,
-                }}
-                wrapperCol={{
-                    span: 14,
-                }}
-                layout="horizontal"
-                initialValues={{
-                    size: componentSize,
-                }}
-                onValuesChange={onFormLayoutChange}
-                size={componentSize}
-            >
-                <h3 style={{ fontSize: 25 ,color: "white" }}>Thay đổi thông tin tài khoản</h3>
-                <Form.Item label="Tài Khoản" >
-                    <Input name='taiKhoan' onChange={formik.handleChange} value={formik.values.taiKhoan} className="form-control bg-transparent text-center" />
-                </Form.Item>
-                <Form.Item label="Mật Khẩu" >
-                    <Input name='matKhau' onChange={formik.handleChange} value={formik.values.matKhau} className="form-control bg-transparent text-center" />
-                </Form.Item>
-                <Form.Item label="Email" >
-                    <Input name='email' onChange={formik.handleChange} value={formik.values.email} className="form-control bg-transparent text-center" />
-                </Form.Item>
-                <Form.Item label="Họ và Tên" >
-                    <Input name='hoTen' onChange={formik.handleChange} value={formik.values.hoTen} className="form-control bg-transparent text-center" />
-                </Form.Item>
-                <Form.Item label="Số điện thoại" >
-                    <Input name='soDt' onChange={formik.handleChange} value={formik.values.soDt} className="form-control bg-transparent text-center" />
-                </Form.Item>
+            <h3 style={{ fontSize: 30, color: "white", textAlign: "center" }}>Thay đổi thông tin tài khoản</h3>
+            <div className="m-auto w-[24rem]">
+                <Form
 
-                <Form.Item label="Xác Nhận">
-                    <Button htmlType='submit'  style={{ margin: 0 }}>Cập Nhật Thông tin</Button>
-                </Form.Item>
-            </Form>
+                    onSubmitCapture={formik.handleSubmit}
+                    labelCol={{
+                        span: 4,
+                    }}
+                    wrapperCol={{
+                        span: 14,
+                    }}
+                    layout="horizontal"
+                    initialValues={{
+                        size: componentSize,
+                    }}
+                    onValuesChange={onFormLayoutChange}
+                    size={componentSize}
+                >
+                    <Form.Item label="Tài Khoản" >
+                        <input id='taiKhoan' onChange={formik.handleChange} value={formik.values.taiKhoan} name='taiKhoan' type="text" className="form-control bg-transparent text-red-500 w-[400px] font-semibold text-2xl text-center sm:w-[250px]" />
+                    </Form.Item>
+                    <Form.Item label="Mật Khẩu" >
+                        <input id='matKhau' onChange={formik.handleChange} value={formik.values.matKhau} name='matKhau' type="text" className="form-control bg-transparent text-red-500 w-[400px] font-semibold text-2xl text-center sm:w-[250px]" />
+                    </Form.Item>
+                    <Form.Item label="Email" >
+                        <input name='email' onChange={formik.handleChange} value={formik.values.email} className="form-control bg-transparent text-red-500 w-[400px] font-semibold text-2xl text-center sm:w-[250px]" />
+                    </Form.Item>
+                    <Form.Item label="Họ và Tên" >
+                        <input name='hoTen' onChange={formik.handleChange} value={formik.values.hoTen} id='hoTen' className="form-control bg-transparent text-red-500 w-[400px] font-semibold text-2xl text-center sm:w-[250px]" />
+                    </Form.Item>
+                    <Form.Item label="Số đt" >
+                        <input name='soDT' onChange={formik.handleChange} value={formik.values.soDt} className="form-control bg-transparent text-red-500 w-[400px] font-semibold text-2xl text-center sm:w-[250px]" />
+                    </Form.Item>
+
+                    <Form.Item label="Xác Nhận">
+                        <Button htmlType='submit' style={{ margin: 0 }}>Cập Nhật Thông tin</Button>
+                    </Form.Item>
+                </Form>
+            </div>
+
         </Fragment>
     );
 };

@@ -149,16 +149,8 @@ export default function Film(props) {
 
 export function Back (props){
   return(
-    <div style={{paddingBottom: '40px'}}>
-      <button style ={{    margin: 'inherit',
-    padding: '10px',
-    border: '1px solid',
-    borderRadius: '7px',
-    marginLeft: '10px',
-    marginTop: '10px' ,
-    background:'white' ,
-    fontWeight:'bold',
-    }} onClick={() =>{ history.goBack()}}> Trở lại</button>
+    <div className="back" >
+      <button  onClick={() =>{ history.goBack()}}> Trở lại</button>
     </div>
   )
 }

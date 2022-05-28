@@ -279,7 +279,7 @@ export default function (props) {
 
       <div className="absolute top-[48px] right-[85px] md:top-[2px] md:right-[28px] cursor-pointer">
         <NavLink to='/' >
-          <img  className="w-[55px] md:w-[44px]" src='http://tixvn.click/static/media/logo.af00d8dd04677a4ee789.png' alt-='..' />
+          <img  className="w-[55px] md:w-[44px]" src='../img/logo.png' alt-='..' />
         </NavLink>
       </div>
     </div>

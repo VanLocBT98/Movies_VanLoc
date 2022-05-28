@@ -5,7 +5,8 @@ module.exports = {
             './src/templates/AdminTemplate/AdminTemplate.jsx',
             './src/page/Admin/Film/Film.jsx',
             './src/page/Admin/User/User.jsx',
-            './src/page/Admin/User/EditUser.jsx'
+            './src/page/Admin/User/EditUser.jsx',
+            './src/page/HistoryBooking/HistoryBooking.jsx'
           ],
   theme: {
     extend: {},
