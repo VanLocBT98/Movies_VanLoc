@@ -97,11 +97,11 @@ export default function MultipleItems({ arrFilm }) {
         <button className={`${styleSlick[activeClassDC]}`} onClick={() => {
           dispatch(listFilmDangChieu());
           setShow(true)
-        }}>Phim Đang Chiếu</button>
+        }}>Đang Chiếu</button>
         <button className={`${styleSlick[activeClassSC]}`} onClick={() => {
           dispatch(listFilmSapChieu());
           setShow(false);
-        }}>Phim Sắp Chiếu</button>
+        }}>Sắp Chiếu</button>
       </div>
       <Slider {...settings}>
         {renderFilm()}
