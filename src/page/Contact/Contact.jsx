@@ -31,7 +31,7 @@ export default function Contact(props) {
             <div>TIX có hai phiên bản <a href="https://apps.apple.com/us/app/123phim-mua-ve-lien-tay-chon/id615186197"> iOS </a> &amp; <a href="https://play.google.com/store/apps/details?id=vn.com.vng.phim123"> Android    </a></div>
           </div>
           <div className='app__body__content__right text-center col-12 col-md-6'>
-            <img src='http://tixvn.click/static/media/mobiles.535378e87f035586931e.png' alt='...' />
+            <img src='../img/mobile.png' alt='...' />
             <div className='app__body__content__right__slider hiden'>
               <Slider {...settings}>
 
